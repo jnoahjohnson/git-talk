@@ -43,18 +43,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (students.length > 0) {
     console.log("students", students)
     students.forEach((student, index) => {
-      const previousStudentId = index === 0 ? null : student[index - 1].id
-      const nextStudentId = null
-
-      console.log(student.fields.slug)
-
       createPage({
         path: student.fields.slug,
         component: studentPage,
         context: {
           id: student.id,
-          previousStudentId,
-          nextStudentId,
         },
       })
     })
